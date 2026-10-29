@@ -2,11 +2,12 @@
 
 [![Sürüm](https://img.shields.io/badge/S%C3%BCr%C3%BCm-v1.0-0284C7.svg)](https://github.com/gokhantr/Stoll-Ham-Olcu-Asistani/releases/latest)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20(x86%20%2F%20x64)-1E293B.svg)](https://github.com/gokhantr/Stoll-Ham-Olcu-Asistani/releases/latest)
+[![Dil](https://img.shields.io/badge/Dil-T%C3%BCrk%C3%A7e%20%2F%20English-F59E0B.svg)](https://github.com/gokhantr/Stoll-Ham-Olcu-Asistani)
 [![Lisans](https://img.shields.io/badge/Lisans-%C3%9ccretsiz%20%2F%20Sekt%C3%B6r-16A34A.svg)](https://github.com/gokhantr/Stoll-Ham-Olcu-Asistani)
 
 **Stoll Ham Ölçü Asistanı**, triko desinatörleri ve teknisyenlerinin ham ölçü iş akışlarını hızlandırmak amacıyla **Gökhan Yücel** tarafından geliştirilmiş olup, sektörün ücretsiz ve sınırsız kullanımına sunulmuştur.
 
-Stoll M1plus Fully Fashion örgü desenlerinde (`.mdv`) ve makineye yüklenen desen paketlerinde (`.zip`) bulunan ham ölçüleri (**Setup2** `_COMMENT-DATA_`) milisaniyeler içinde okur, dinamik bir model matrisinde düzenlemenize imkân tanır, makinede deseni açan örgücünün doğrudan göreceği formatta işler ve M1plus motoru ile **Sintral (F11)** derlemesini otomatik tamamlar.
+Stoll M1plus Fully Fashion örgü desenlerinde (`.mdv`) ve makineye yüklenen desen paketlerinde (`.zip`) bulunan ham ölçüleri (**Setup2** `_COMMENT-DATA_`) milisaniyeler içinde okur, akıllı model matrisinde düzenlemenize imkân tanır, makinede deseni açan operatörün doğrudan göreceği resmi formata dönüştürür ve M1plus motoru ile **Sintral (F11)** derlemesini otomatik tamamlar.
 
 ---
 
@@ -22,88 +23,62 @@ En son güncel sürümü aşağıdaki bağlantıdan hemen indirebilirsiniz:
 
 ## ✨ Temel Özellikler
 
-- ⚡ **Otomatik Parça, Beden ve Ölçü Tespiti:**
-  - Tek tek dosya veya klasör sürükleyip bırakarak desenleri anında yükleyin.
-  - Ön, Arka, Kol, Yaka, Biye gibi parçaları ve tüm bedenleri (36, 38, 40, S, M, L vb.) akıllı hiyerarşik sıralamayla matrise yerleştirir.
-  - Setup2 XML dosyasındaki kayıtlı yorum satırlarından ham ölçüleri (Boy, Lastik, En vb.) regex ile otomatik ayrıştırır.
+- 🌐 **İki Dilli Arayüz (Türkçe & English):**
+  - İşletim sisteminizin dilini otomatik algılar (Türkçe veya İngilizce).
+  - Ayarlar menüsünden tek tıkla dil değişimi yapılabilir.
 
-- 🎛️ **Gelişmiş Model Ham Ölçü Matrisi:**
-  - Enine taşma yapmayan, dikey akışlı, yüksek okunabilirliğe sahip kutu tasarımı.
-  - **Değişiklik Vurgusu (Eski Değer Takibi):** Sadece değeri değiştirilen hücrelerde `Eski: X` etiketi ve yeşil renk vurgusu gösterilir; dokunulmayan değerler sade kalır.
-  - **Hızlı Gezinme:** Hücreler arasında `Enter` veya `Ok Tuşları` ile zahmetsizce dolaşın.
-  - **Tekerlek Koruması:** Mouse scroll tekerleğiyle gezinirken yanlışlıkla sayıların değişmesi kesinlikle engellenmiştir.
+- 🧵 **Makineden Doğrudan Okuma & Akıllı Ayraç Desteği:**
+  - Stoll makinesinin Setup ekranında operatörlerin pratikçe yazdığı tüm formatları tanır:
+    * `55-5,5` *(Tire)*
+    * `55 5,5` *(Boşluk)*
+    * `55/5,5` *(Bölü)*
+    * `55x5,5` / `55X5,5` *(Çarpı / X)*
+    * `55\5,5` *(Ters Slash)*
+    * `55=5,5` *(Eşittir)*
+    * `55` *(Enter)* `5,5` *(Alt satır)*
+    * `BOY 58 LASTİK 5` veya `CEP AÇIKLIĞI 16.5` *(Etiketli)*
+  - İşle butonuna basıldığında tüm ölçüler resmi Stoll Setup2 şablonuna otomatik standartlaştırılır.
 
-- 🔒 **Akıllı Sabitleme (Kilit) & Eşitleme:**
-  - Bir ölçünün (örneğin Kol Lastiği) tüm bedenlerde aynı kalması gerekiyorsa tek tıkla kilitleyin (`🔒 Sabit`).
-  - Herhangi bir bedeni değiştirdiğinizde veya `+` / `−` butonlarına bastığınızda tüm bedenler otomatik senkronize olur.
-  - Desen ilk açıldığında tüm bedenlerde aynı değere sahip ölçüler otomatik kilitli olarak algılanır.
+- 🎛️ **Akıllı Model & Beden Matrisi:**
+  - Tek hamlede sürükle-bırak ile ön, arka, kol, yaka parçalarını ve tüm bedenleri (XS, S, M, L, XL vb.) listeler.
+  - `L-XL`, `XS_S` gibi ortak bedenli veya `MODEL1-YAKA` gibi bedensiz parçalar fazladan sütun açmaz; ilgili bedenlere otomatik paylaştırılır ve değerleri birbirine bağlanır.
 
-- ✏️ **Dinamik Ölçü Yönetimi (Ekle, Düzenle, Sil):**
-  - Parçaya özel yeni ölçü ekleyin (En, Yaka Düşüklüğü, Reglan Boyu vb.).
-  - Kalem (`✏️`) butonuyla ölçü isimlerini doğrudan yeniden adlandırın.
-  - `+` ve `−` butonlarıyla mevcut tablodaki değerleri 0.5 cm hassasiyetle toplu artırıp azaltın.
+- 🔒 **Kilitli Ölçüler & Canlı Eşitleme:**
+  - Kilit (🔒) simgesiyle lastik, en veya ortak parça ölçülerini seriye kilitleyin.
+  - Bir bedende yaptığınız değişiklik tüm serideki değerlere anında canlı yansır.
+  - Fare tekerleğiyle gezinirken yanlışlıkla sayıların değişmesi kesinlikle engellenmiştir.
 
-- 💬 **Özelleştirilebilir Makine Yorum Şablonu:**
-  - Örgü makinelerinin ekranında görünen ham ölçü metninin formatını serbestçe belirleyin.
-  - `{DESEN_ADI}`, `{TARIH}`, `{OLCULER}` değişkenlerinin yanı sıra `{BOY}`, `{LASTİK}` veya `{OLCU_1}`, `{OLCU_2}` gibi özel etiketleri kullanarak yan yana veya satır satır yerleşim oluşturun.
-  - Canlı önizleme kutusunda makine ekranında nasıl görüneceğini anında izleyin.
+- 🖱️ **Sağ Tık Menüsü & Hızlı Gezinme:**
+  - Hücreler arasında `Enter` veya `Yön Okları` ile seri gezinebilirsiniz.
+  - Sağ tık menüsüyle *"Bu Değeri Tüm Bedenlere Uygula"*, *"Kopyala"* ve *"Yapıştır"* yapabilirsiniz.
 
-- ⚙️ **M1plus Otomasyonu & Sintral (F11) Derleme:**
-  - Güncellenen ham ölçüleri hem MDV hem de ZIP içindeki Setup dosyalarına yazar.
-  - M1plus GUI oturumu üzerinden deseni açar, `F11` Sintral derlemesini çalıştırır ve desen parametrelerini kaydeder.
-  - Süreç boyunca detaylı konsol terminali ve ilerleme çubuğu ile her adım raporlanır.
+- ⚙️ **Hızlı M1plus Enjeksiyonu & F11 Sintral Derleme:**
+  - **Hızlı Mod (Varsayılan):** Sadece ölçüsü değişen desenleri derleyerek büyük modellerde maksimum zaman kazandırır.
+  - Arka planda güvenli M1plus oturumu yönetimi ve Sintral (F11) derlemesi.
 
-- 📄 **Ham Ölçü Föyü Yazdırma & Vektörel PDF İndirme:**
-  - Model adına göre hazırlanan şık teknik ham ölçü föyünü anında görüntüleyin.
-  - Tabloya girilen en güncel değerleri yansıtır.
-  - Tek tıkla doğrudan yazıcıya gönderin (`Yazdır`) veya bilgisayarınıza PDF olarak kaydedin (`PDF İndir`).
+- 📄 **Ham Ölçü Föyü Yazdırma & PDF Çıktısı:**
+  - Kesimhane, triko ustası ve kalite kontrol için tertemiz, resmi bir A4 ölçü tablosu çıktısı veya PDF indirme imkânı.
 
-- 🛡️ **ZIP & MDV Ayrımı ve Güvenlik Koruması:**
-  - Makineden alınan ZIP desenlerinin orijinal makine ayarları korunur; ZIP kaynaklı dosyalarda `ExtractSendTo` çalıştırılarak ayarların ezilmesi önlenir.
-  - ZIP yüklendiğinde bilgisayardaki orijinal MDV dosyaları toplu olarak seçtirilir; hem flash diskteki ZIP hem de arşivdeki MDV senkronize güncellenir.
-
-- 💾 **Ayar Yedekleme (İçe / Dışa Aktarma):**
-  - M1plus dizin yolu ve makine yorum şablonunu tek tıkla `.json` dosyası olarak yedekleyin veya başka bilgisayarlara aktarın.
-
-- 🔄 **Entegre GitHub Sürüm Denetimi:**
-  - Yeni bir sürüm çıktığında üst bantta bildirim rozeti çıkar ve tek tıkla indirme bağlantısını açar.
+- ❓ **Dahili Kullanım Kılavuzu (F1):**
+  - Klavyeden `F1` tuşuyla veya üst bardaki `Yardım` butonuyla açılan pratik kullanım kılavuzu.
 
 ---
 
 ## 🛠️ Sistem Gereksinimleri
 
 - **İşletim Sistemi:** Windows 10, Windows 11 (32-bit & 64-bit)
-- **Stoll Yazılımı:** Stoll M1plus (M1plus 7.x, 8.x sürümleriyle tam uyumlu)
-- **Çalışma Zamanı:** Ekstra kurulum veya Python ortamı gerektirmez (Tek parça taşınabilir `.exe`)
+- **Stoll Yazılımı:** Stoll M1plus (7.x, 8.x sürümleriyle tam uyumlu)
+- **Çalışma Şekli:** Ekstra kurulum veya Python ortamı gerektirmez (Tek parça taşınabilir `.exe`)
 
 ---
 
-## 📖 Kullanım Kılavuzu
+## 📖 Hızlı Kullanım Adımları
 
-1. **Desenleri Yükleyin:**
-   - `.mdv` veya makine `.zip` dosyalarını pencereye sürükleyip bırakın.
-   - Program otomatik olarak model adını, parçaları (Ön, Arka vb.) ve bedenleri matrise döker.
-2. **Ham Ölçüleri Düzenleyin:**
-   - Hücrelere güncel ham ölçüleri yazın. Değeri değişen kutular yeşil yanar ve eski değerleri gösterir.
-   - Tüm bedenleri senkronize etmek için `🔒` butonunu kullanın.
-   - İhtiyaca göre `+` / `−` adımlama butonlarıyla hızlıca 0.5 cm ayarlama yapın.
-3. **Föy Alın veya İşleyin:**
-   - İsterseniz `Föy / PDF Yazdır` butonuna basarak atölye için ham ölçü tablosunu yazdırın veya PDF olarak indirin.
-   - `Ham Ölçüleri İşle ve Sintral Derle (F11)` butonuna basın.
-   - Onay kutusundan sonra işlem başlar; Setup dosyaları yazılır, M1plus açılarak F11 derlemesi yapılır ve desenler kullanıma hazır hale gelir.
-
----
-
-## 📝 Sürüm Geçmişi
-
-### v1.0 (İlk Kararlı Sürüm - Official Release)
-- Tek parça portable `.exe` mimarisi (PyWebView + Edge Chromium motoru).
-- Dinamik parça ve beden matrisi, akıllı sıralama (Ön, Arka, Kol, Yaka, Aksesuarlar).
-- Otomatik kilit algılama ve senkronize beden eşitleme.
-- Canlı önizlemeli yorum şablonu düzenleyicisi (Özel değişken etiketleri desteği).
-- İstemci taraflı vektörel PDF dışa aktarma (`html2canvas` + `jsPDF`).
-- Ayarları İçe / Dışa Aktarma (`.json`).
-- GitHub API entegrasyonlu canlı sürüm güncelleme denetimi.
+1. **Desenleri Yükleyin:** `.mdv` veya makine `.zip` dosyalarını pencereye sürükleyip bırakın.
+2. **Ölçüleri Düzenleyin:** Matristeki kutulara güncel ölçüleri girin. Gerekirse kilit simgesiyle ölçüleri seriye sabitleyin.
+3. **Föy Alın veya İşleyin:** 
+   - İsterseniz `Föy / PDF Yazdır` butonuyla föy alın.
+   - `Ham Ölçüleri İşle ve Sintral Derle (F11)` butonuna basarak M1plus derlemesini başlatın.
 
 ---
 
@@ -112,4 +87,3 @@ En son güncel sürümü aşağıdaki bağlantıdan hemen indirebilirsiniz:
 - **Geliştirici:** Gökhan Yücel
 - **GitHub Reposu:** [https://github.com/gokhantr/Stoll-Ham-Olcu-Asistani](https://github.com/gokhantr/Stoll-Ham-Olcu-Asistani)
 - **Lisans:** Triko sektörünün ücretsiz ve sınırsız kullanımına sunulmuştur.
-
